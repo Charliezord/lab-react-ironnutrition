@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import { Card, Row, Col, Divider, Input, Button } from 'antd';
+import foods from './foods.json';
+import { useState } from 'react';
 
 function App() {
+  const [allFoods, setAllFoods] = useState(foods);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {allFoods.map((food) => {
+        return (
+          <div>
+            <p>{food.name}</p>
+            <img src={food.image} alt="food" style={{width: '300px'}}/>
+          </div>
+        );
+      })}
     </div>
   );
 }
