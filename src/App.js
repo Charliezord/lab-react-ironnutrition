@@ -5,18 +5,25 @@ import foods from './foods.json';
 import FoodBox from './Components/FoodBox';
 import AddFoodForm from './Components/AddFoodForm';
 import { useState } from 'react';
+import SearchBar from "./Components/SearchBar";
 
 
 function App() {
   const [allFoods, setAllFoods] = useState(foods);
-  
+  const [filter, setFilter] = useState("");
+  const filteredFoods = allFoods.filter((elem) => {
+    // console.log(food.name);
+    return elem.name.toLowerCase().includes(filter.toLowerCase())
+  })
+  console.log("Hi", filteredFoods);
   return (
     <div className="App">
+    <SearchBar filterProp={filter} setFilterProp={setFilter}/>
     <AddFoodForm allFoodsList = {allFoods} setAllFoods = {setAllFoods}/>
-      {allFoods.map((singleFoods, index) => {
+      {filteredFoods.map((singleFood, index) => {
         return (
           <div key={"foodsdiv" + index}>
-            <FoodBox food={singleFoods} />
+            <FoodBox food={singleFood} />
           </div>
         );
       })}

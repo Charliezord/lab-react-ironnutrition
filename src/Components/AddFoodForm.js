@@ -13,8 +13,7 @@ import { useState} from 'react'
             event.preventDefault();
             console.log(formState)
             console.log(allFoodsList)
-            allFoodsList.push(formState)
-            setAllFoods([...allFoodsList])
+            setAllFoods([...allFoodsList, formState])
         };
 
         return (
