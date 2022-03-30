@@ -8,27 +8,20 @@ import FoodBox from './Components/FoodBox';
 
 function App() {
   const [allFoods, setAllFoods] = useState(foods);
-
+  console.log(foods);
   return (
     <div className="App">
-      {allFoods.map((singleFood) => {
+      {allFoods.map((singleFoods, index) => {
         return (
-          <div>
-            <p>{singleFood.name}</p>
-            <img src={singleFood.image} alt="food" style={{width: '300px'}}/>
-            {/* <FoodBox food = {singleFood}/> */}
+          <div key={"foodsdiv" + index}>
+            {/* <p>{singleFood.name}</p> */}
+            {/* <img src={singleFood.image} alt="food" style={{ width: '300px' }} /> */}
+            <FoodBox food={singleFoods} />
           </div>
         );
       })}
-      
-      <FoodBox food={ {
-  name: "Orange",
-  calories: 85,
-  image: "https://i.imgur.com/abKGOcv.jpg",
-  servings: 1
-      }}/>
     </div>
- 
-  )}
+  );
+}
 
 export default App;
