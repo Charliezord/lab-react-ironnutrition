@@ -1,15 +1,14 @@
 import { Divider, Input } from 'antd';
-import { useState } from "react";
 
 
 
 
-function SearchBar({filterProp, setFilterProp}) {
+function SearchBar({searchProp, setSearchProp}) {
     // const [filter, setFilter] = useState("");
     
-    const handleFilterUpdate = (event) => {
+    const handleSearchUpdate = (event) => {
         console.log(event.target.value);
-        setFilterProp(event.target.value);
+        setSearchProp(event.target.value);
       };
 
     return (
@@ -17,32 +16,10 @@ function SearchBar({filterProp, setFilterProp}) {
         <Divider>Search</Divider>
   
         <label>Search</label>
-        <Input value={filterProp} type="text" onChange={handleFilterUpdate} />
+        <Input value={searchProp} type="text" onChange={handleSearchUpdate} />
          
       </>
     );
   }
   
   export default SearchBar;
-  
-// export function SearchBar () {
-//     return (
-//         <div className="App">
-//         Search: <input value={filter} onChange={handleFilterUpdate} />
-//         <div className="harry-potter-characters">
-//           {filter === ""
-//             ? characters.map(toCharacterComponent)
-//             : characters
-//                 .filter((character) => {
-//                   const lowerFilter = filter.toLowerCase();
-//                   return (
-//                     character.name.toLowerCase().includes(lowerFilter) ||
-//                     character.house.toLowerCase().includes(lowerFilter) ||
-//                     character.patronus.toLowerCase().includes(lowerFilter)
-//                   );
-//                 })
-//                 .map(toCharacterComponent)}
-//         </div>
-//       </div>
-//     )
-// }

@@ -10,20 +10,20 @@ import SearchBar from "./Components/SearchBar";
 
 function App() {
   const [allFoods, setAllFoods] = useState(foods);
-  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
   const filteredFoods = allFoods.filter((elem) => {
-    // console.log(food.name);
-    return elem.name.toLowerCase().includes(filter.toLowerCase())
+  
+    return elem.name.toLowerCase().includes(search.toLowerCase())
   })
   console.log("Hi", filteredFoods);
   return (
     <div className="App">
-    <SearchBar filterProp={filter} setFilterProp={setFilter}/>
+    <SearchBar searchProp={search} setSearchProp={setSearch}/>
     <AddFoodForm allFoodsList = {allFoods} setAllFoods = {setAllFoods}/>
       {filteredFoods.map((singleFood, index) => {
         return (
           <div key={"foodsdiv" + index}>
-            <FoodBox food={singleFood} />
+            <FoodBox food={singleFood} allFoodsList = {allFoods} setAllFoods = {setAllFoods}/>
           </div>
         );
       })}

@@ -1,6 +1,13 @@
 import { Card, Col, Button } from 'antd';
 
-function FoodBox({food}){
+function FoodBox({food, allFoodsList, setAllFoods}){
+
+  const deleteFoodItem = (food) => {
+   let filteredFoods = allFoodsList.filter((currentFood) => {
+      return currentFood.name !== food.name
+    });
+    setAllFoods(filteredFoods)
+  }
 
     return (
         <Col>
@@ -14,7 +21,7 @@ function FoodBox({food}){
             <p>
               <b>Total Calories:{food.calories*food.servings} </b> kcal
             </p>
-            <Button type="primary"> Delete </Button>
+            <Button onClick={() => deleteFoodItem(food)} type="primary"> Delete </Button>
           </Card>
         </Col>
       );
